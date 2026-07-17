@@ -1,6 +1,11 @@
 # Anjna's Kitchen
 
-Authentic Indian catering website for [Anjna Verma](https://anjnakitchen.github.io) — built with Next.js and deployed to GitHub Pages.
+Next.js site for [anjnakitchen.github.io](https://anjnakitchen.github.io).
+
+## Branches
+
+- `source` — Next.js app (edit here)
+- `main` — published static site for GitHub Pages
 
 ## Local development
 
@@ -11,14 +16,19 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Deploy
+## Publish updates
 
-Pushes to `main` build a static export and publish via GitHub Pages (see `.github/workflows/deploy.yml`).
+```bash
+npm run build
+# then publish the contents of out/ to the main branch
+```
 
-In the repo settings, set **Pages → Source** to **GitHub Actions**.
+## Enable GitHub Pages (one-time)
 
-## Stack
+Sign in as **anjnakitchen**, open:
 
-- Next.js (static export)
-- Tailwind CSS
-- Framer Motion
+https://github.com/anjnakitchen/anjnakitchen.github.io/settings/pages
+
+Set **Source** to **Deploy from a branch**, branch **main** / **/ (root)**, then Save.
+
+The site will be live at https://anjnakitchen.github.io
