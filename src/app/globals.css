@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  --night: #080412;
+  --night-deep: #12081f;
+  --magenta: #ff4d9a;
+  --magenta-soft: #ff7aa8;
+  --orange: #ff8a3d;
+  --orange-soft: #ffb08a;
+  --cream: #fff5f8;
+  --muted: rgba(255, 245, 250, 0.6);
+  --background: var(--night);
+  --foreground: var(--cream);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(255, 77, 154, 0.45);
+  color: white;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+.font-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(90, 30, 120, 0.45), transparent 50%),
+    linear-gradient(180deg, #080412 0%, #12081f 35%, #0a0514 70%, #080412 100%);
+  min-height: 100%;
+}
+
+.site-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1.5px 1.5px at 40% 80%, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 100% 100%;
+  opacity: 0.35;
+}
+
+.hero-aurora {
+  animation: aurora-drift 14s ease-in-out infinite alternate;
+}
+
+.hero-aurora-delay {
+  animation: aurora-drift 18s ease-in-out infinite alternate-reverse;
+}
+
+.scroll-cue {
+  animation: scroll-pulse 2.2s ease-in-out infinite;
+}
+
+.menu-row {
+  transition: background-color 0.35s ease, padding-left 0.35s ease;
+}
+
+.menu-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+  padding-left: 0.35rem;
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4%, -3%, 0) scale(1.08);
+  }
+}
+
+@keyframes scroll-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scaleY(0.85);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-aurora,
+  .hero-aurora-delay,
+  .scroll-cue {
+    animation: none;
+  }
+}
