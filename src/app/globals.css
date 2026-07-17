@@ -29,11 +29,20 @@ body {
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
 }
 
 ::selection {
   background: rgba(255, 77, 154, 0.45);
   color: white;
+}
+
+@media (max-width: 639px) {
+  .menu-row:hover {
+    background: transparent;
+    padding-left: 0;
+  }
 }
 
 .font-display {

@@ -46,6 +46,16 @@ export type MenuCategory =
       pricing: "combo";
       trayItems: TrayItem[];
       comboItems: ComboItem[];
+    }
+  | {
+      id: string;
+      title: string;
+      pricing: "appetizers";
+      traySubtitle: string;
+      trayItems: TrayItem[];
+      pieceSubtitle: string;
+      pieceMinimumNote: string;
+      pieceItems: PieceItem[];
     };
 
 export const business = {
@@ -63,11 +73,11 @@ export const business = {
 
 export const menuCategories: MenuCategory[] = [
   {
-    id: "appetizers-trays",
+    id: "appetizers",
     title: "Appetizers",
-    subtitle: "Half · Medium · Full tray",
-    pricing: "tray",
-    items: [
+    pricing: "appetizers",
+    traySubtitle: "Half · Medium · Full tray",
+    trayItems: [
       { name: "Mix Veg Pakoda", prices: { half: 75, medium: 125, full: 140 } },
       { name: "Paneer Pakoda", prices: { half: 85, medium: 140, full: 160 } },
       { name: "Onion Bhaji", prices: { half: 75, medium: 125, full: 140 } },
@@ -78,14 +88,9 @@ export const menuCategories: MenuCategory[] = [
       { name: "Chana Chaat", prices: { half: 75, medium: 125, full: 140 } },
       { name: "Paneer Tikka", prices: { half: 90, medium: 150, full: 170 } },
     ],
-  },
-  {
-    id: "appetizers-pieces",
-    title: "Appetizers - By the Piece",
-    subtitle: "Perfect for gatherings and parties",
-    pricing: "piece",
-    minimumNote: "Minimum order 25 pieces",
-    items: [
+    pieceSubtitle: "By the piece",
+    pieceMinimumNote: "Minimum order 25 pieces",
+    pieceItems: [
       { name: "Veg Cutlets", price: 3.0 },
       { name: "Bread Pakoda", price: 3.5 },
       { name: "Daal Kachori", price: 3.5 },

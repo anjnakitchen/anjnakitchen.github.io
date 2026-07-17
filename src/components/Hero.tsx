@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-5 pb-16 pt-24"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-4 pb-12 pt-20 sm:px-5 sm:pb-16 sm:pt-24"
     >
       <div
         aria-hidden
@@ -38,7 +38,7 @@ export function Hero() {
             width={520}
             height={378}
             priority
-            className="relative mx-auto h-auto w-[min(88vw,460px)] drop-shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:w-[500px]"
+            className="relative mx-auto h-auto w-[min(86vw,380px)] drop-shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:w-[500px]"
           />
         </motion.div>
 
@@ -46,7 +46,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 max-w-xl font-display text-2xl leading-snug text-white/90 sm:text-3xl"
+          className="mt-6 max-w-xl px-1 font-display text-[1.35rem] leading-snug text-white/90 sm:mt-8 sm:text-3xl"
         >
           Homestyle Indian catering, crafted with care by {business.owner}.
         </motion.p>
@@ -55,7 +55,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55, duration: 0.85 }}
-          className="mt-4 max-w-md font-body text-base leading-relaxed text-white/60 sm:text-lg"
+          className="mt-3 max-w-md px-1 font-body text-[0.95rem] leading-relaxed text-white/60 sm:mt-4 sm:text-lg"
         >
           From festive trays to full celebrations — authentic flavors for every
           gathering.
@@ -65,17 +65,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.85 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4"
         >
           <a
             href="#menu"
-            className="rounded-full bg-[linear-gradient(135deg,#ff4d9a_0%,#ff8a3d_100%)] px-8 py-3.5 font-body text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_40px_rgba(255,77,154,0.35)] transition-transform duration-300 hover:scale-[1.04]"
+            className="flex min-h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#ff4d9a_0%,#ff8a3d_100%)] px-8 py-3.5 font-body text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_40px_rgba(255,77,154,0.35)] transition-transform duration-300 hover:scale-[1.04] sm:w-auto"
           >
             Explore the Menu
           </a>
           <Link
             href="/about/"
-            className="rounded-full border border-white/25 bg-white/5 px-8 py-3.5 font-body text-sm tracking-[0.08em] text-white/90 uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/10"
+            className="flex min-h-12 w-full items-center justify-center rounded-full border border-white/25 bg-white/5 px-8 py-3.5 font-body text-sm tracking-[0.08em] text-white/90 uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/10 sm:w-auto"
           >
             Meet Anjna
           </Link>
@@ -86,8 +86,8 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 1 }}
-          className="mt-16 flex flex-col items-center gap-2 text-white/40 transition-colors hover:text-white/70"
-          aria-label="Scroll to menu"
+          className="mt-10 flex flex-col items-center gap-2 text-white/40 transition-colors hover:text-white/70 sm:mt-16"
+          aria-label="Scroll to food menu"
         >
           <span className="font-body text-[11px] tracking-[0.28em] uppercase">
             Scroll
