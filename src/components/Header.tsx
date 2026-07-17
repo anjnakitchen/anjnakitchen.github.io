@@ -55,19 +55,17 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6 lg:h-20 lg:px-8">
         <Link
           href={homeHref}
-          className="group flex min-w-0 items-center gap-2.5"
+          className="group flex min-w-0 items-center"
           onClick={() => setOpen(false)}
+          aria-label={business.name}
         >
           <Image
             src="/logo.png"
             alt=""
-            width={64}
-            height={46}
-            className="h-8 w-auto shrink-0 drop-shadow-[0_0_18px_rgba(255,80,140,0.35)] transition-transform duration-500 group-hover:scale-105 sm:h-10"
+            width={72}
+            height={52}
+            className="h-9 w-auto shrink-0 drop-shadow-[0_0_14px_rgba(255,80,140,0.3)] transition-transform duration-500 group-hover:scale-105 sm:h-11"
           />
-          <span className="truncate font-display text-[0.95rem] tracking-wide text-white/95 sm:text-lg lg:text-xl">
-            {business.name}
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8">

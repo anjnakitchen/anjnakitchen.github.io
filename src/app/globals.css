@@ -158,6 +158,10 @@ body {
   transform: rotateY(180deg);
 }
 
+.intro-logo-image {
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.22));
+}
+
 @keyframes intro-logo-rotate {
   0% {
     transform: rotateY(0deg) scale(0.98);

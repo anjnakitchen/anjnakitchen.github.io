@@ -5,8 +5,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { business } from "@/data/menu";
 import { heroTransition } from "@/lib/motion";
+import { smoothScrollToId } from "@/lib/smoothScroll";
 
 export function Hero() {
+  const scrollToMenu = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    smoothScrollToId("menu");
+  };
+
   return (
     <section
       id="top"
@@ -39,7 +45,7 @@ export function Hero() {
             width={520}
             height={378}
             priority
-            className="relative mx-auto h-auto w-[min(86vw,380px)] drop-shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:w-[500px]"
+            className="relative mx-auto h-auto w-[min(86vw,380px)] drop-shadow-[0_8px_24px_rgba(0,0,0,0.28)] sm:w-[500px]"
           />
         </motion.div>
 
@@ -47,7 +53,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={heroTransition(0.12)}
-          className="mt-6 max-w-xl px-1 font-display text-[1.35rem] leading-snug text-white/90 sm:mt-8 sm:text-3xl"
+          className="mt-10 max-w-xl px-1 font-display text-[1.35rem] leading-snug text-white/90 sm:mt-14 sm:text-3xl"
         >
           Homestyle Indian catering, crafted with care by {business.owner}.
         </motion.p>
@@ -56,10 +62,11 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={heroTransition(0.22)}
-          className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4"
+          className="mt-10 flex w-full max-w-sm flex-col gap-3 sm:mt-12 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4"
         >
           <a
             href="#menu"
+            onClick={scrollToMenu}
             className="flex min-h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#ff4d9a_0%,#ff8a3d_100%)] px-8 py-3.5 font-body text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_40px_rgba(255,77,154,0.35)] transition-transform duration-300 hover:scale-[1.04] sm:w-auto"
           >
             Explore the Menu
@@ -74,10 +81,11 @@ export function Hero() {
 
         <motion.a
           href="#menu"
+          onClick={scrollToMenu}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={heroTransition(0.5)}
-          className="mt-10 flex flex-col items-center gap-2 text-white/40 transition-colors hover:text-white/70 sm:mt-16"
+          className="mt-14 flex flex-col items-center gap-2 text-white/40 transition-colors hover:text-white/70 sm:mt-20"
           aria-label="Scroll to food menu"
         >
           <span className="font-body text-[11px] tracking-[0.28em] uppercase">
