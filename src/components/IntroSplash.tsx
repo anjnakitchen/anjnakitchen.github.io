@@ -73,15 +73,29 @@ export function IntroSplash() {
             aria-hidden
             className="absolute inset-0 scale-125 rounded-full bg-[radial-gradient(circle,rgba(255,90,140,0.4),transparent_68%)] blur-2xl"
           />
-          <div className="intro-logo-spin relative">
-            <Image
-              src="/logo.png"
-              alt=""
-              width={520}
-              height={378}
-              priority
-              className="relative h-auto w-[min(72vw,340px)] drop-shadow-[0_24px_70px_rgba(0,0,0,0.55)] sm:w-[400px]"
-            />
+          <div className="intro-logo-tilt">
+            <div className="intro-logo-spin relative w-[min(72vw,340px)] sm:w-[400px]">
+            <div className="intro-logo-face">
+              <Image
+                src="/logo.png"
+                alt=""
+                width={520}
+                height={378}
+                priority
+                className="h-auto w-full drop-shadow-[0_24px_70px_rgba(0,0,0,0.55)]"
+              />
+            </div>
+            <div className="intro-logo-face intro-logo-face-back" aria-hidden>
+              <Image
+                src="/logo.png"
+                alt=""
+                width={520}
+                height={378}
+                priority
+                className="h-auto w-full drop-shadow-[0_24px_70px_rgba(0,0,0,0.55)]"
+              />
+            </div>
+            </div>
           </div>
         </div>
         <motion.div
@@ -90,7 +104,7 @@ export function IntroSplash() {
             opacity: phase === "fading" ? 0 : 1,
             y: phase === "fading" ? 4 : 0,
           }}
-          transition={{ delay: 1.1, duration: 1.2, ease: "easeOut" }}
+          transition={{ delay: 0.35, duration: 0.9, ease: "easeOut" }}
           className="mt-8 flex flex-col items-center sm:mt-10"
         >
           <div

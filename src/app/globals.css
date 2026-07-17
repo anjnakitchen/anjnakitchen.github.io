@@ -134,18 +134,28 @@ body {
   perspective-origin: center center;
 }
 
+.intro-logo-tilt {
+  transform: rotateX(11deg);
+  transform-style: preserve-3d;
+}
+
 .intro-logo-spin {
   transform-style: preserve-3d;
   animation: intro-logo-rotate 5.5s cubic-bezier(0.33, 0, 0.2, 1) forwards;
   animation-iteration-count: 1;
   will-change: transform;
+}
+
+.intro-logo-face {
+  transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-.intro-logo-spin img {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+.intro-logo-face-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
 }
 
 @keyframes intro-logo-rotate {
