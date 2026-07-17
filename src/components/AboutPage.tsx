@@ -117,50 +117,42 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="relative px-5 pb-24 sm:px-8 sm:pb-32">
+      <section className="relative px-4 pb-20 sm:px-8 sm:pb-28">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.85 }}
-          className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-white/10 px-8 py-12 sm:px-12 sm:py-16"
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-3xl text-center"
         >
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,77,154,0.18),rgba(20,10,40,0.4),rgba(255,138,61,0.14))]"
-          />
-          <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <h2 className="font-display text-3xl text-white sm:text-4xl">
-                Say hello
-              </h2>
-              <p className="mt-3 max-w-lg font-body text-base leading-relaxed text-white/65">
-                Planning an event? Reach out by phone, email, or Facebook —
-                Anjna would love to cook for you.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <a
-                href={business.phoneHref}
-                className="rounded-full border border-white/20 bg-black/25 px-6 py-3 text-center font-body text-sm text-white transition-colors hover:border-white/40"
-              >
-                {business.phone}
-              </a>
-              <a
-                href={business.emailHref}
-                className="rounded-full border border-white/20 bg-black/25 px-6 py-3 text-center font-body text-sm text-white transition-colors hover:border-white/40"
-              >
-                {business.email}
-              </a>
-              <a
-                href={business.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-[linear-gradient(135deg,#ff4d9a_0%,#ff8a3d_100%)] px-6 py-3 text-center font-body text-sm font-medium text-white"
-              >
-                Facebook page
-              </a>
-            </div>
+          <div className="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+          <h2 className="mt-10 font-display text-3xl text-white sm:text-4xl">
+            Say hello
+          </h2>
+          <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-white/60">
+            Planning an event? Reach out — Anjna would love to cook for you.
+          </p>
+          <div className="mt-8 space-y-6">
+            <a
+              href={business.phoneHref}
+              className="block font-display text-2xl text-white transition-colors hover:text-[#ffb08a] sm:text-3xl"
+            >
+              {business.phone}
+            </a>
+            <a
+              href={business.emailHref}
+              className="block break-all font-display text-lg text-white/85 transition-colors hover:text-[#ffb08a] sm:text-2xl"
+            >
+              {business.email}
+            </a>
+            <a
+              href={business.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block font-body text-sm tracking-[0.14em] text-[#ffb08a] uppercase transition-colors hover:text-white"
+            >
+              Facebook →
+            </a>
           </div>
         </motion.div>
       </section>

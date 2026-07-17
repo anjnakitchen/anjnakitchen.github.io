@@ -69,6 +69,10 @@ export const business = {
   emailHref: "mailto:anjnakitchen@yahoo.com",
   facebook:
     "https://www.facebook.com/profile.php?id=100092091342425",
+  facebookPhotos:
+    "https://www.facebook.com/profile.php?id=100092091342425&sk=photos",
+  facebookReviews:
+    "https://www.facebook.com/profile.php?id=100092091342425&sk=reviews",
 };
 
 export const menuCategories: MenuCategory[] = [

@@ -334,7 +334,7 @@ export function Menu() {
           </p>
         </motion.div>
 
-        <div className="sticky top-14 z-20 -mx-4 mb-8 border-y border-white/10 bg-[rgba(8,4,18,0.94)] px-3 py-2.5 backdrop-blur-xl sm:top-20 sm:mx-0 sm:mb-10 sm:rounded-full sm:border sm:px-3 sm:py-3">
+        <div className="sticky top-14 z-20 -mx-4 mb-8 border-y border-white/10 bg-[rgba(8,4,18,0.96)] px-3 py-2.5 backdrop-blur-xl sm:top-16 sm:mx-0 sm:mb-10 sm:rounded-full sm:border sm:px-3 sm:py-3 lg:top-20">
           <div
             className="flex gap-1 overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="tablist"
