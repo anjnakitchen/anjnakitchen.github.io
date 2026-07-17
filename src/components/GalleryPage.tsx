@@ -32,7 +32,7 @@ export function GalleryPage() {
             Moments from Anjna&apos;s kitchen.
           </h1>
           <p className="mx-auto mt-4 max-w-xl font-body text-base leading-relaxed text-white/60 sm:text-lg">
-            A peek at the food she prepares for celebrations — pulled from her{" "}
+            A peek at the food she prepares for celebrations, pulled from her{" "}
             <a
               href={business.facebookPhotos}
               target="_blank"

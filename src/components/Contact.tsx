@@ -27,7 +27,7 @@ export function Contact() {
             Let&apos;s plan your next feast.
           </h2>
           <p className="mx-auto mt-4 max-w-lg font-body text-base leading-relaxed text-white/60 sm:text-lg">
-            Share your date, guest count, and favorite dishes — Anjna will help
+            Share your date, guest count, and favorite dishes. Anjna will help
             you build a menu that feels like home.
           </p>
         </motion.div>

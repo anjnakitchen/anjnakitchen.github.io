@@ -50,6 +50,10 @@ body {
     animation: none;
     opacity: 0.75;
   }
+
+  .intro-logo-spin {
+    animation-duration: 5.5s;
+  }
 }
 
 .font-display {
@@ -125,6 +129,31 @@ body {
   }
 }
 
+.intro-logo-stage {
+  perspective: 1100px;
+  perspective-origin: center center;
+}
+
+.intro-logo-spin {
+  transform-style: preserve-3d;
+  animation: intro-logo-rotate 5.5s cubic-bezier(0.37, 0, 0.18, 1) forwards;
+  will-change: transform;
+}
+
+@keyframes intro-logo-rotate {
+  0% {
+    transform: rotateY(-8deg) scale(0.97);
+  }
+  100% {
+    transform: rotateY(360deg) scale(1);
+  }
+}
+
+.intro-splash {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -134,5 +163,10 @@ body {
   .hero-aurora-delay,
   .scroll-cue {
     animation: none;
+  }
+
+  .intro-logo-spin {
+    animation: none;
+    transform: none;
   }
 }

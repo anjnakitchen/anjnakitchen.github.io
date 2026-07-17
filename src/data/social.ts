@@ -17,10 +17,10 @@ export const reviewsSummary = {
 export const reviews: Review[] = [
   {
     id: "gajanan-2024",
-    name: "Gajanan Maharaj America Devotees Parivar — Austin TX Chapter",
+    name: "Gajanan Maharaj America Devotees Parivar, Austin TX Chapter",
     date: "July 27, 2024",
     quote:
-      "We have been using Anjna's Kitchen services for all our events. She cooks amazing Prasad food (no onion and garlic). Usually around 300 folks come to our event and every single person praises the food. A few times we asked her to cook Maharashtrian dishes — she cooked them with 100% authentic taste. She is our go-to person for any catering order.",
+      "We have been using Anjna's Kitchen services for all our events. She cooks amazing Prasad food (no onion and garlic). Usually around 300 folks come to our event and every single person praises the food. A few times we asked her to cook Maharashtrian dishes and she cooked them with 100% authentic taste. She is our go-to person for any catering order.",
   },
   {
     id: "poonam-luthra-2023",
@@ -40,7 +40,7 @@ export const reviews: Review[] = [
     name: "Pavan Pawar",
     date: "May 11, 2023",
     quote:
-      "I would highly recommend Anjna's Kitchen for your catering order. Anjna's every food item is the best — but my favorites are Tava Fry Veggies, Daal Kachori, Dahi Bhalle, and Moong Daal Halwa. We recently had a party at our house and almost every guest had a special mention about the food.",
+      "I would highly recommend Anjna's Kitchen for your catering order. Anjna's every food item is the best, but my favorites are Tava Fry Veggies, Daal Kachori, Dahi Bhalle, and Moong Daal Halwa. We recently had a party at our house and almost every guest had a special mention about the food.",
   },
   {
     id: "vandita-joshi-more-2023",
@@ -54,7 +54,7 @@ export const reviews: Review[] = [
     name: "Neha Shaw",
     date: "April 25, 2023",
     quote:
-      "She is the best when it comes to authentic North Indian vegetarian cuisine. Highly recommend her for any catering needs — parties, home events, and large or small group gatherings.",
+      "She is the best when it comes to authentic North Indian vegetarian cuisine. Highly recommend her for any catering needs, from parties and home events to large or small group gatherings.",
   },
 ];
 

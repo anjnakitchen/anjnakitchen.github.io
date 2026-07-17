@@ -35,7 +35,7 @@ export function Hero() {
           <div className="absolute inset-0 scale-110 rounded-full bg-[radial-gradient(circle,rgba(255,90,140,0.35),transparent_65%)] blur-2xl" />
           <Image
             src="/logo.png"
-            alt="Anjna's Kitchen — Serves Authentic Indian Food"
+            alt="Anjna's Kitchen, Serves Authentic Indian Food"
             width={520}
             height={378}
             priority
@@ -52,20 +52,10 @@ export function Hero() {
           Homestyle Indian catering, crafted with care by {business.owner}.
         </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={heroTransition(0.22)}
-          className="mt-3 max-w-md px-1 font-body text-[0.95rem] leading-relaxed text-white/60 sm:mt-4 sm:text-lg"
-        >
-          From festive trays to full celebrations — authentic flavors for every
-          gathering.
-        </motion.p>
-
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={heroTransition(0.32)}
+          transition={heroTransition(0.22)}
           className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4"
         >
           <a

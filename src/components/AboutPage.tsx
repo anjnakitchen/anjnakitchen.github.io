@@ -16,17 +16,17 @@ const moments = [
   {
     label: "The cook",
     title: "Recipes carried from home",
-    body: "Anjna Verma grew up in a kitchen where every occasion had its own aroma — fresh spices toasted by hand, dough rolled for a crowd, sweets simmered until they tasted like celebration. That same instinct shapes every tray she prepares today.",
+    body: "Anjna Verma grew up in a kitchen where every occasion had its own aroma: fresh spices toasted by hand, dough rolled for a crowd, sweets simmered until they tasted like celebration. That same instinct shapes every tray she prepares today.",
   },
   {
     label: "The craft",
     title: "Made to order, never rushed",
-    body: "Whether it is a quiet family puja or a wedding feast, Anjna builds menus around your guests and your traditions. Dishes are cooked fresh for your date — layered with the comfort of home and the polish of a catered table.",
+    body: "Whether it is a quiet family puja or a wedding feast, Anjna builds menus around your guests and your traditions. Dishes are cooked fresh for your date, with the comfort of home and the polish of a catered table.",
   },
   {
     label: "The table",
     title: "Gatherings across Rhode Island",
-    body: "From birthdays and office lunches to festive weekends, Anjna's Kitchen brings authentic vegetarian Indian food to the celebrations that matter. Tell her the occasion — she will help you fill the table.",
+    body: "From birthdays and office lunches to festive weekends, Anjna's Kitchen brings authentic vegetarian Indian food to the celebrations that matter. Tell her the occasion and she will help you fill the table.",
   },
 ];
 
@@ -68,7 +68,7 @@ export function AboutPage() {
               A mother&apos;s kitchen, opened for your celebration.
             </h1>
             <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-white/65">
-              Behind every tray from {business.name} is {business.owner} —
+              Behind every tray from {business.name} is {business.owner},
               cooking the way she always has for the people she loves, now
               shared with families and friends who want food that tastes like
               home.
@@ -133,7 +133,7 @@ export function AboutPage() {
             Say hello
           </h2>
           <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-white/60">
-            Planning an event? Reach out — Anjna would love to cook for you.
+            Planning an event? Reach out. Anjna would love to cook for you.
           </p>
           <div className="mt-8 space-y-6">
             <a

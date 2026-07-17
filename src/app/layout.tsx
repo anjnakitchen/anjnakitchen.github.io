@@ -21,11 +21,15 @@ export const metadata: Metadata = {
     "Anjna's Kitchen serves authentic Indian food for celebrations, parties, and gatherings. Homestyle vegetarian catering by Anjna Verma.",
   openGraph: {
     title: "Anjna's Kitchen",
-    description: "Serves Authentic Indian Food — catering by Anjna Verma.",
+    description: "Serves Authentic Indian Food. Catering by Anjna Verma.",
     images: ["/logo.png"],
   },
   icons: {
-    icon: "/logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    apple: "/logo.png",
   },
 };
 
