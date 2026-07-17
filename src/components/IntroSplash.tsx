@@ -84,14 +84,27 @@ export function IntroSplash() {
             />
           </div>
         </div>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: phase === "fading" ? 0 : 0.55 }}
-          transition={{ delay: 0.9, duration: 1.4, ease: "easeOut" }}
-          className="mt-8 font-display text-sm tracking-[0.24em] text-white/50 italic sm:mt-10 sm:text-base"
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{
+            opacity: phase === "fading" ? 0 : 1,
+            y: phase === "fading" ? 4 : 0,
+          }}
+          transition={{ delay: 1.1, duration: 1.2, ease: "easeOut" }}
+          className="mt-8 flex flex-col items-center sm:mt-10"
         >
-          Good things take time
-        </motion.p>
+          <div
+            aria-hidden
+            className="mb-4 h-px w-14 bg-gradient-to-r from-transparent via-[#ff7aa8]/70 to-transparent sm:w-20"
+          />
+          <p className="intro-tagline font-display text-[1.05rem] tracking-[0.2em] sm:text-lg">
+            Good things take time
+          </p>
+          <div
+            aria-hidden
+            className="mt-4 h-px w-10 bg-gradient-to-r from-transparent via-[#ff8a3d]/50 to-transparent sm:w-14"
+          />
+        </motion.div>
       </div>
     </motion.div>
   );

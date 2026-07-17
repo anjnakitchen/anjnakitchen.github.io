@@ -136,17 +136,38 @@ body {
 
 .intro-logo-spin {
   transform-style: preserve-3d;
-  animation: intro-logo-rotate 5.5s cubic-bezier(0.37, 0, 0.18, 1) forwards;
+  animation: intro-logo-rotate 5.5s cubic-bezier(0.33, 0, 0.2, 1) forwards;
+  animation-iteration-count: 1;
   will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.intro-logo-spin img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @keyframes intro-logo-rotate {
   0% {
-    transform: rotateY(-8deg) scale(0.97);
+    transform: rotateY(0deg) scale(0.98);
   }
   100% {
     transform: rotateY(360deg) scale(1);
   }
+}
+
+.intro-tagline {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 122, 168, 0.95) 0%,
+    rgba(255, 176, 138, 1) 45%,
+    rgba(255, 138, 61, 0.95) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(255, 122, 168, 0.15);
 }
 
 .intro-splash {
