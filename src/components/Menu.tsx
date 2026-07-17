@@ -111,10 +111,10 @@ function CategoryBlock({ category }: { category: MenuCategory }) {
   return (
     <motion.section
       id={category.id}
-      initial={{ opacity: 0, y: 36 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       className="scroll-mt-36 sm:scroll-mt-40"
     >
       <div className="mb-5 border-b border-white/10 pb-4 sm:mb-6 sm:pb-5">
@@ -250,6 +250,48 @@ function CategoryBlock({ category }: { category: MenuCategory }) {
           </ul>
         </>
       ) : null}
+
+      {category.pricing === "curries" ? (
+        <>
+          <p className="mb-3 font-body text-xs tracking-[0.18em] text-white/45 uppercase">
+            {category.paneerSubtitle}
+          </p>
+          <TrayHeader />
+          <ul className="mb-10">
+            {category.paneerItems.map((item) => (
+              <TrayRow
+                key={item.name}
+                name={item.name}
+                half={item.prices.half}
+                medium={item.prices.medium}
+                full={item.prices.full}
+                note={item.note}
+              />
+            ))}
+          </ul>
+          <div className="mb-4 border-t border-white/10 pt-8">
+            <h4 className="font-display text-2xl text-white sm:text-3xl">
+              {category.sabjiSubtitle}
+            </h4>
+            <p className="mt-1 font-body text-xs tracking-[0.18em] text-white/45 uppercase">
+              Half · Medium · Full tray
+            </p>
+          </div>
+          <TrayHeader />
+          <ul>
+            {category.sabjiItems.map((item) => (
+              <TrayRow
+                key={item.name}
+                name={item.name}
+                half={item.prices.half}
+                medium={item.prices.medium}
+                full={item.prices.full}
+                note={item.note}
+              />
+            ))}
+          </ul>
+        </>
+      ) : null}
     </motion.section>
   );
 }
@@ -270,6 +312,8 @@ export function Menu() {
   const [active, setActive] = useState(menuCategories[0]?.id ?? "");
   const lockUntil = useRef(0);
   const pillRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const tablistRef = useRef<HTMLDivElement | null>(null);
+  const didMountPills = useRef(false);
 
   const syncActiveFromScroll = useCallback(() => {
     if (Date.now() < lockUntil.current) return;
@@ -288,13 +332,23 @@ export function Menu() {
     };
   }, [syncActiveFromScroll]);
 
+  // Keep the active pill visible inside the horizontal scroller only —
+  // never call scrollIntoView on the document (that was jumping the page mid-load).
   useEffect(() => {
+    if (!didMountPills.current) {
+      didMountPills.current = true;
+      return;
+    }
+    const scroller = tablistRef.current;
     const pill = pillRefs.current[active];
-    pill?.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
+    if (!scroller || !pill) return;
+    const scrollerRect = scroller.getBoundingClientRect();
+    const pillRect = pill.getBoundingClientRect();
+    const nextLeft =
+      scroller.scrollLeft +
+      (pillRect.left - scrollerRect.left) -
+      (scrollerRect.width - pillRect.width) / 2;
+    scroller.scrollTo({ left: Math.max(0, nextLeft), behavior: "smooth" });
   }, [active]);
 
   const selectCategory = (id: string) => {
@@ -303,17 +357,16 @@ export function Menu() {
     const el = document.getElementById(id);
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
-    history.replaceState(null, "", `#${id}`);
   };
 
   return (
     <section id="menu" className="relative px-4 py-16 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.85 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
           className="mb-8 max-w-2xl sm:mb-12"
         >
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
@@ -336,6 +389,7 @@ export function Menu() {
 
         <div className="sticky top-14 z-20 -mx-4 mb-8 border-y border-white/10 bg-[rgba(8,4,18,0.96)] px-3 py-2.5 backdrop-blur-xl sm:top-16 sm:mx-0 sm:mb-10 sm:rounded-full sm:border sm:px-3 sm:py-3 lg:top-20">
           <div
+            ref={tablistRef}
             className="flex gap-1 overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="tablist"
             aria-label="Food menu categories"

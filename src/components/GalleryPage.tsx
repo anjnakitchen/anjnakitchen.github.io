@@ -15,9 +15,9 @@ export function GalleryPage() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,70,140,0.18),transparent_55%)]"
         />
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className="relative mx-auto max-w-6xl text-center"
         >
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
@@ -46,10 +46,10 @@ export function GalleryPage() {
           {galleryPhotos.map((photo, index) => (
             <motion.figure
               key={photo.src}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ delay: Math.min(index * 0.04, 0.24), duration: 0.55 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ delay: Math.min(index * 0.03, 0.18), duration: 0.4 }}
               className="mb-2 break-inside-avoid overflow-hidden rounded-xl sm:mb-3 sm:rounded-2xl lg:mb-4"
             >
               <Image

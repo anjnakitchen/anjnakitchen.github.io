@@ -34,9 +34,9 @@ export function AboutPage() {
 
         <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, scale: 0.94, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="flex justify-center lg:justify-start"
           >
             <Image
@@ -50,9 +50,9 @@ export function AboutPage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.08, duration: 0.45, ease: "easeOut" }}
           >
             <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
               About Anjna
@@ -91,13 +91,13 @@ export function AboutPage() {
           {moments.map((moment, index) => (
             <motion.article
               key={moment.label}
-              initial={{ opacity: 0, y: 36 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{
-                delay: index * 0.05,
-                duration: 0.85,
-                ease: [0.22, 1, 0.36, 1],
+                delay: index * 0.04,
+                duration: 0.45,
+                ease: "easeOut",
               }}
               className="grid gap-4 border-t border-white/10 pt-12 sm:gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16"
             >
@@ -119,10 +119,10 @@ export function AboutPage() {
 
       <section className="relative px-4 pb-20 sm:px-8 sm:pb-28">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.45 }}
           className="mx-auto max-w-3xl text-center"
         >
           <div className="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent" />

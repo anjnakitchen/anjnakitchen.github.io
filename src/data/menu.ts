@@ -56,6 +56,15 @@ export type MenuCategory =
       pieceSubtitle: string;
       pieceMinimumNote: string;
       pieceItems: PieceItem[];
+    }
+  | {
+      id: string;
+      title: string;
+      pricing: "curries";
+      paneerSubtitle: string;
+      paneerItems: TrayItem[];
+      sabjiSubtitle: string;
+      sabjiItems: TrayItem[];
     };
 
 export const business = {
@@ -113,11 +122,11 @@ export const menuCategories: MenuCategory[] = [
     ],
   },
   {
-    id: "paneer-curries",
-    title: "Paneer Curries",
-    subtitle: "Half · Medium · Full tray",
-    pricing: "tray",
-    items: [
+    id: "curries",
+    title: "Curries",
+    pricing: "curries",
+    paneerSubtitle: "Paneer",
+    paneerItems: [
       { name: "Saag Paneer", prices: { half: 85, medium: 140, full: 160 } },
       { name: "Shahi Paneer", prices: { half: 80, medium: 135, full: 155 } },
       { name: "Kadai Paneer", prices: { half: 80, medium: 135, full: 155 } },
@@ -145,13 +154,8 @@ export const menuCategories: MenuCategory[] = [
       { name: "Veg Paneer Zalfarezi", prices: { half: 80, medium: 135, full: 155 } },
       { name: "Paneer Tikka Masala", prices: { half: 85, medium: 140, full: 160 } },
     ],
-  },
-  {
-    id: "curries-sabji",
-    title: "Curries & Sabji",
-    subtitle: "Half · Medium · Full tray",
-    pricing: "tray",
-    items: [
+    sabjiSubtitle: "Sabji & more",
+    sabjiItems: [
       { name: "Malai Kofta", prices: { half: 85, medium: 140, full: 160 } },
       { name: "Navratan Korma", prices: { half: 80, medium: 135, full: 155 } },
       { name: "Pindi Chole", prices: { half: 75, medium: 120, full: 145 } },

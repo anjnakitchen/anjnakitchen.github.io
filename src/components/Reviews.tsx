@@ -22,10 +22,10 @@ export function Reviews() {
     <section id="reviews" className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-3xl text-center">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.45 }}
         >
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
             From Facebook
@@ -43,10 +43,10 @@ export function Reviews() {
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={review.id}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.45 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
               className="px-1"
             >
               <p className="font-display text-xl leading-relaxed text-white/90 sm:text-2xl md:text-[1.7rem]">
@@ -69,21 +69,39 @@ export function Reviews() {
         </div>
 
         {total > 1 ? (
-          <div className="mt-8 flex items-center justify-center gap-2">
-            {reviews.map((item, i) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-label={`Show review ${i + 1}`}
-                aria-current={i === index}
-                onClick={() => setIndex(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === index
-                    ? "w-7 bg-[linear-gradient(135deg,#ff4d9a_0%,#ff8a3d_100%)]"
-                    : "w-2 bg-white/25 hover:bg-white/40"
-                }`}
-              />
-            ))}
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <button
+              type="button"
+              aria-label="Previous review"
+              onClick={() => setIndex((i) => (i - 1 + total) % total)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-white/35 hover:text-white"
+            >
+              ←
+            </button>
+            <div className="flex items-center justify-center gap-2">
+              {reviews.map((item, i) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-label={`Show review ${i + 1}`}
+                  aria-current={i === index}
+                  onClick={() => setIndex(i)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === index
+                      ? "w-7 bg-[linear-gradient(135deg,#ff4d9a_0%,#ff8a3d_100%)]"
+                      : "w-2 bg-white/25 hover:bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              aria-label="Next review"
+              onClick={() => setIndex((i) => (i + 1) % total)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-white/35 hover:text-white"
+            >
+              →
+            </button>
           </div>
         ) : null}
 

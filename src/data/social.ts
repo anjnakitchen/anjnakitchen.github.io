@@ -13,6 +13,10 @@ export const reviewsSummary = {
     "https://www.facebook.com/profile.php?id=100092091342425&sk=reviews",
 };
 
+/**
+ * Written recommendations visible on the public Facebook reviews page.
+ * (Many of the 18 recommends are recommend-only / login-gated without public text.)
+ */
 export const reviews: Review[] = [
   {
     id: "gajanan-2024",
@@ -22,10 +26,18 @@ export const reviews: Review[] = [
       "We have been using Anjna's Kitchen services for all our events. She cooks amazing Prasad food (no onion and garlic). Usually around 300 folks come to our event and every single person praises the food. A few times we asked her to cook Maharashtrian dishes — she cooked them with 100% authentic taste. She is our go-to person for any catering order.",
   },
   {
-    id: "facebook-rate",
-    name: "Facebook recommendations",
+    id: "tarun-verma-2024",
+    name: "Tarun Verma",
+    date: "July 22, 2024",
     quote:
-      "Eighteen guests recommend Anjna's Kitchen — with a perfect 100% recommend rate across every review on her Facebook page.",
+      "For authentic Desi cuisine and taste. You will not regret — keep mesmerizing the taste.",
+  },
+  {
+    id: "dhara-shah-2024",
+    name: "Dhara Shah",
+    date: "May 20, 2024",
+    quote:
+      "Anjna catered at a recent event and the food was delicious. Our ask was no onion, no garlic, and no potato dishes, and she did a wonderful job. Guests loved the presentation and taste. Everything was par excellence. I would highly recommend her.",
   },
 ];
 
