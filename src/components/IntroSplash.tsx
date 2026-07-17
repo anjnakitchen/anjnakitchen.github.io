@@ -11,7 +11,7 @@ const FADE_DURATION_MS = 800;
 
 type IntroPhase = "playing" | "fading" | "done";
 
-export function IntroSplash() {
+export function IntroSplash({ onComplete }: { onComplete?: () => void }) {
   const [phase, setPhase] = useState<IntroPhase>("playing");
 
   useEffect(() => {
@@ -22,6 +22,7 @@ export function IntroSplash() {
 
     if (seen || reducedMotion) {
       setPhase("done");
+      onComplete?.();
       return;
     }
 
@@ -36,7 +37,7 @@ export function IntroSplash() {
       window.clearTimeout(endIntro);
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [onComplete]);
 
   useEffect(() => {
     if (phase !== "fading") return;
@@ -44,16 +45,17 @@ export function IntroSplash() {
     const unlock = window.setTimeout(() => {
       document.body.style.overflow = "";
       setPhase("done");
+      onComplete?.();
     }, FADE_DURATION_MS);
 
     return () => window.clearTimeout(unlock);
-  }, [phase]);
+  }, [phase, onComplete]);
 
   if (phase === "done") return null;
 
   return (
     <motion.div
-      className="intro-splash fixed inset-0 z-[100] flex items-center justify-center pointer-events-auto"
+      className="intro-splash fixed inset-0 z-[100] pointer-events-auto"
       initial={{ opacity: 1 }}
       animate={{ opacity: phase === "fading" ? 0 : 1 }}
       transition={{ duration: FADE_DURATION_MS / 1000, ease: "easeInOut" }}
@@ -67,37 +69,40 @@ export function IntroSplash() {
       />
       <Starfield />
 
-      <div className="intro-logo-stage relative z-10 flex flex-col items-center px-6">
-        <div className="relative">
-          <div
-            aria-hidden
-            className="absolute inset-0 scale-110 rounded-full bg-[radial-gradient(circle,rgba(255,90,140,0.28),transparent_72%)] blur-xl"
-          />
-          <div className="intro-logo-tilt">
-            <div className="intro-logo-spin relative w-[min(72vw,340px)] sm:w-[400px]">
-              <div className="intro-logo-face">
-                <Image
-                  src="/logo.png"
-                  alt=""
-                  width={520}
-                  height={378}
-                  priority
-                  className="intro-logo-image h-auto w-full"
-                />
-              </div>
-              <div className="intro-logo-face intro-logo-face-back" aria-hidden>
-                <Image
-                  src="/logo.png"
-                  alt=""
-                  width={520}
-                  height={378}
-                  priority
-                  className="intro-logo-image h-auto w-full"
-                />
+      <div className="intro-logo-stage relative z-10 h-full w-full">
+        <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-center px-6">
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute inset-0 scale-110 rounded-full bg-[radial-gradient(circle,rgba(255,90,140,0.28),transparent_72%)] blur-xl"
+            />
+            <div className="intro-logo-tilt">
+              <div className="intro-logo-spin relative w-[min(72vw,340px)] sm:w-[400px]">
+                <div className="intro-logo-face">
+                  <Image
+                    src="/logo.png"
+                    alt=""
+                    width={520}
+                    height={378}
+                    priority
+                    className="intro-logo-image h-auto w-full"
+                  />
+                </div>
+                <div className="intro-logo-face intro-logo-face-back" aria-hidden>
+                  <Image
+                    src="/logo.png"
+                    alt=""
+                    width={520}
+                    height={378}
+                    priority
+                    className="intro-logo-image h-auto w-full"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
+
         <motion.p
           initial={{ opacity: 0, y: 6 }}
           animate={{
@@ -105,7 +110,7 @@ export function IntroSplash() {
             y: phase === "fading" ? 4 : 0,
           }}
           transition={{ delay: 0.35, duration: 0.9, ease: "easeOut" }}
-          className="mt-8 font-display text-[1.05rem] tracking-[0.18em] text-white/50 sm:mt-10 sm:text-lg"
+          className="absolute inset-x-0 top-[80%] -translate-y-1/2 px-6 text-center font-display text-[1.05rem] tracking-[0.18em] text-white/50 sm:text-lg"
         >
           Good things take time
         </motion.p>

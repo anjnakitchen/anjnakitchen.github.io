@@ -4,24 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { galleryPhotos } from "@/data/social";
-import {
-  revealInView,
-  revealInitial,
-  revealTransition,
-  revealViewport,
-} from "@/lib/motion";
+import { useScrollReveal } from "@/components/IntroContext";
 
 export function GalleryPreview() {
   const preview = galleryPhotos.slice(0, 4);
+  const reveal = useScrollReveal();
 
   return (
     <section className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <motion.div
-          initial={revealInitial}
-          whileInView={revealInView}
-          viewport={revealViewport}
-          transition={revealTransition}
+          {...reveal}
           className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>

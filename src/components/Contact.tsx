@@ -2,24 +2,16 @@
 
 import { motion } from "framer-motion";
 import { business } from "@/data/menu";
-import {
-  revealInView,
-  revealInitial,
-  revealTransition,
-  revealViewport,
-} from "@/lib/motion";
+import { useScrollReveal } from "@/components/IntroContext";
 
 export function Contact() {
+  const headerReveal = useScrollReveal();
+  const bodyReveal = useScrollReveal({ delay: 0.06, duration: 0.65 });
+
   return (
     <section id="contact" className="relative px-4 py-16 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-4xl">
-        <motion.div
-          initial={revealInitial}
-          whileInView={revealInView}
-          viewport={revealViewport}
-          transition={revealTransition}
-          className="text-center"
-        >
+        <motion.div {...headerReveal} className="text-center">
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
             Get in touch
           </p>
@@ -32,13 +24,7 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={revealInitial}
-          whileInView={revealInView}
-          viewport={revealViewport}
-          transition={{ ...revealTransition, delay: 0.06 }}
-          className="mt-12 space-y-8 sm:mt-16"
-        >
+        <motion.div {...bodyReveal} className="mt-12 space-y-8 sm:mt-16">
           <div className="text-center">
             <p className="font-body text-[11px] tracking-[0.28em] text-white/40 uppercase">
               Call or text

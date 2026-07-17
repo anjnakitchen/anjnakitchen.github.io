@@ -7,12 +7,7 @@ import {
   menuCategories,
   type MenuCategory,
 } from "@/data/menu";
-import {
-  revealInView,
-  revealInitial,
-  revealTransition,
-  revealViewport,
-} from "@/lib/motion";
+import { useScrollReveal } from "@/components/IntroContext";
 
 function navLabel(title: string) {
   if (title.startsWith("Mithai")) return "Mithai";
@@ -114,9 +109,12 @@ function TrayHeader() {
 }
 
 function CategoryBlock({ category }: { category: MenuCategory }) {
+  const reveal = useScrollReveal({ duration: 0.7 });
+
   return (
-    <section
+    <motion.section
       id={category.id}
+      {...reveal}
       className="scroll-mt-36 sm:scroll-mt-40"
     >
       <div className="mb-5 border-b border-white/10 pb-4 sm:mb-6 sm:pb-5">
@@ -294,7 +292,7 @@ function CategoryBlock({ category }: { category: MenuCategory }) {
           </ul>
         </>
       ) : null}
-    </section>
+    </motion.section>
   );
 }
 
@@ -316,6 +314,8 @@ export function Menu() {
   const pillRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const tablistRef = useRef<HTMLDivElement | null>(null);
   const didMountPills = useRef(false);
+  const headerReveal = useScrollReveal();
+  const pillsReveal = useScrollReveal({ delay: 0.08, duration: 0.65 });
 
   const syncActiveFromScroll = useCallback(() => {
     if (Date.now() < lockUntil.current) return;
@@ -365,10 +365,7 @@ export function Menu() {
     <section id="menu" className="relative px-4 py-16 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <motion.div
-          initial={revealInitial}
-          whileInView={revealInView}
-          viewport={revealViewport}
-          transition={revealTransition}
+          {...headerReveal}
           className="mb-8 max-w-2xl sm:mb-12"
         >
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
@@ -389,7 +386,10 @@ export function Menu() {
           </p>
         </motion.div>
 
-        <div className="sticky top-14 z-20 -mx-4 mb-8 border-y border-white/10 bg-[rgba(8,4,18,0.96)] px-3 py-2.5 backdrop-blur-xl sm:top-16 sm:mx-0 sm:mb-10 sm:rounded-full sm:border sm:px-3 sm:py-3 lg:top-20">
+        <motion.div
+          {...pillsReveal}
+          className="sticky top-14 z-20 -mx-4 mb-8 border-y border-white/10 bg-[rgba(8,4,18,0.96)] px-3 py-2.5 backdrop-blur-xl sm:top-16 sm:mx-0 sm:mb-10 sm:rounded-full sm:border sm:px-3 sm:py-3 lg:top-20"
+        >
           <div
             ref={tablistRef}
             className="flex gap-1 overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -419,7 +419,7 @@ export function Menu() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         <div className="space-y-14 sm:space-y-20">
           {menuCategories.map((category) => (

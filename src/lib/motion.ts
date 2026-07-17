@@ -11,7 +11,7 @@ export const revealViewport: ViewportOptions = {
 };
 
 export const revealTransition: Transition = {
-  duration: 0.55,
+  duration: 0.65,
   ease: [0.25, 0.1, 0.25, 1],
 };
 

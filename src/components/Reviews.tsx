@@ -4,17 +4,13 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { reviews, reviewsSummary } from "@/data/social";
 import { business } from "@/data/menu";
-import {
-  revealInView,
-  revealInitial,
-  revealTransition,
-  revealViewport,
-} from "@/lib/motion";
+import { useScrollReveal } from "@/components/IntroContext";
 
 export function Reviews() {
   const [index, setIndex] = useState(0);
   const total = reviews.length;
   const review = reviews[index];
+  const headerReveal = useScrollReveal();
 
   useEffect(() => {
     if (total <= 1) return;
@@ -27,12 +23,7 @@ export function Reviews() {
   return (
     <section id="reviews" className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-3xl text-center">
-        <motion.div
-          initial={revealInitial}
-          whileInView={revealInView}
-          viewport={revealViewport}
-          transition={revealTransition}
-        >
+        <motion.div {...headerReveal}>
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
             From Facebook
           </p>

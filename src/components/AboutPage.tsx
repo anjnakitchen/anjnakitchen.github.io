@@ -4,13 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { business } from "@/data/menu";
-import {
-  heroTransition,
-  revealInView,
-  revealInitial,
-  revealTransition,
-  revealViewport,
-} from "@/lib/motion";
+import { heroTransition } from "@/lib/motion";
+import { useScrollReveal } from "@/components/IntroContext";
 
 const moments = [
   {
@@ -31,6 +26,9 @@ const moments = [
 ];
 
 export function AboutPage() {
+  const momentReveal = useScrollReveal();
+  const ctaReveal = useScrollReveal();
+
   return (
     <>
       <section className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-36">
@@ -41,8 +39,8 @@ export function AboutPage() {
 
         <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <motion.div
-            initial={revealInitial}
-            animate={revealInView}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={heroTransition(0)}
             className="flex justify-center lg:justify-start"
           >
@@ -57,8 +55,8 @@ export function AboutPage() {
           </motion.div>
 
           <motion.div
-            initial={revealInitial}
-            animate={revealInView}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={heroTransition(0.1)}
           >
             <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
@@ -98,10 +96,7 @@ export function AboutPage() {
           {moments.map((moment) => (
             <motion.article
               key={moment.label}
-              initial={revealInitial}
-              whileInView={revealInView}
-              viewport={revealViewport}
-              transition={revealTransition}
+              {...momentReveal}
               className="grid gap-4 border-t border-white/10 pt-12 sm:gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16"
             >
               <div>
@@ -122,10 +117,7 @@ export function AboutPage() {
 
       <section className="relative px-4 pb-20 sm:px-8 sm:pb-28">
         <motion.div
-          initial={revealInitial}
-          whileInView={revealInView}
-          viewport={revealViewport}
-          transition={revealTransition}
+          {...ctaReveal}
           className="mx-auto max-w-3xl text-center"
         >
           <div className="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
