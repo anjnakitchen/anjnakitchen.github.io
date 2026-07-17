@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { reviews, reviewsSummary } from "@/data/social";
 import { business } from "@/data/menu";
+import {
+  revealInView,
+  revealInitial,
+  revealTransition,
+  revealViewport,
+} from "@/lib/motion";
 
 export function Reviews() {
   const [index, setIndex] = useState(0);
@@ -22,10 +28,10 @@ export function Reviews() {
     <section id="reviews" className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-3xl text-center">
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.45 }}
+          initial={revealInitial}
+          whileInView={revealInView}
+          viewport={revealViewport}
+          transition={revealTransition}
         >
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
             From Facebook

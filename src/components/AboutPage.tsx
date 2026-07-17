@@ -4,6 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { business } from "@/data/menu";
+import {
+  heroTransition,
+  revealInView,
+  revealInitial,
+  revealTransition,
+  revealViewport,
+} from "@/lib/motion";
 
 const moments = [
   {
@@ -34,9 +41,9 @@ export function AboutPage() {
 
         <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            initial={revealInitial}
+            animate={revealInView}
+            transition={heroTransition(0)}
             className="flex justify-center lg:justify-start"
           >
             <Image
@@ -50,9 +57,9 @@ export function AboutPage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.08, duration: 0.45, ease: "easeOut" }}
+            initial={revealInitial}
+            animate={revealInView}
+            transition={heroTransition(0.1)}
           >
             <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
               About Anjna
@@ -88,17 +95,13 @@ export function AboutPage() {
 
       <section className="relative px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-6xl space-y-16 sm:space-y-24">
-          {moments.map((moment, index) => (
+          {moments.map((moment) => (
             <motion.article
               key={moment.label}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                delay: index * 0.04,
-                duration: 0.45,
-                ease: "easeOut",
-              }}
+              initial={revealInitial}
+              whileInView={revealInView}
+              viewport={revealViewport}
+              transition={revealTransition}
               className="grid gap-4 border-t border-white/10 pt-12 sm:gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16"
             >
               <div>
@@ -119,10 +122,10 @@ export function AboutPage() {
 
       <section className="relative px-4 pb-20 sm:px-8 sm:pb-28">
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.45 }}
+          initial={revealInitial}
+          whileInView={revealInView}
+          viewport={revealViewport}
+          transition={revealTransition}
           className="mx-auto max-w-3xl text-center"
         >
           <div className="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent" />

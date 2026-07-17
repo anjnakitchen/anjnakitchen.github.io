@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { business } from "@/data/menu";
+import { heroTransition } from "@/lib/motion";
 
 export function Hero() {
   return (
@@ -26,9 +27,9 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.92, y: 24 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={heroTransition(0)}
           className="relative"
         >
           <div className="absolute inset-0 scale-110 rounded-full bg-[radial-gradient(circle,rgba(255,90,140,0.35),transparent_65%)] blur-2xl" />
@@ -43,18 +44,18 @@ export function Hero() {
         </motion.div>
 
         <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={heroTransition(0.12)}
           className="mt-6 max-w-xl px-1 font-display text-[1.35rem] leading-snug text-white/90 sm:mt-8 sm:text-3xl"
         >
           Homestyle Indian catering, crafted with care by {business.owner}.
         </motion.p>
 
         <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.85 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={heroTransition(0.22)}
           className="mt-3 max-w-md px-1 font-body text-[0.95rem] leading-relaxed text-white/60 sm:mt-4 sm:text-lg"
         >
           From festive trays to full celebrations — authentic flavors for every
@@ -62,9 +63,9 @@ export function Hero() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.85 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={heroTransition(0.32)}
           className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4"
         >
           <a
@@ -85,7 +86,7 @@ export function Hero() {
           href="#menu"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
+          transition={heroTransition(0.5)}
           className="mt-10 flex flex-col items-center gap-2 text-white/40 transition-colors hover:text-white/70 sm:mt-16"
           aria-label="Scroll to food menu"
         >

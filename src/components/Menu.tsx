@@ -7,6 +7,12 @@ import {
   menuCategories,
   type MenuCategory,
 } from "@/data/menu";
+import {
+  revealInView,
+  revealInitial,
+  revealTransition,
+  revealViewport,
+} from "@/lib/motion";
 
 function navLabel(title: string) {
   if (title.startsWith("Mithai")) return "Mithai";
@@ -109,12 +115,8 @@ function TrayHeader() {
 
 function CategoryBlock({ category }: { category: MenuCategory }) {
   return (
-    <motion.section
+    <section
       id={category.id}
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       className="scroll-mt-36 sm:scroll-mt-40"
     >
       <div className="mb-5 border-b border-white/10 pb-4 sm:mb-6 sm:pb-5">
@@ -292,7 +294,7 @@ function CategoryBlock({ category }: { category: MenuCategory }) {
           </ul>
         </>
       ) : null}
-    </motion.section>
+    </section>
   );
 }
 
@@ -363,10 +365,10 @@ export function Menu() {
     <section id="menu" className="relative px-4 py-16 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5 }}
+          initial={revealInitial}
+          whileInView={revealInView}
+          viewport={revealViewport}
+          transition={revealTransition}
           className="mb-8 max-w-2xl sm:mb-12"
         >
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">

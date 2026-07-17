@@ -2,16 +2,22 @@
 
 import { motion } from "framer-motion";
 import { business } from "@/data/menu";
+import {
+  revealInView,
+  revealInitial,
+  revealTransition,
+  revealViewport,
+} from "@/lib/motion";
 
 export function Contact() {
   return (
     <section id="contact" className="relative px-4 py-16 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-4xl">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.85 }}
+          initial={revealInitial}
+          whileInView={revealInView}
+          viewport={revealViewport}
+          transition={revealTransition}
           className="text-center"
         >
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
@@ -27,10 +33,10 @@ export function Contact() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ delay: 0.1, duration: 0.8 }}
+          initial={revealInitial}
+          whileInView={revealInView}
+          viewport={revealViewport}
+          transition={{ ...revealTransition, delay: 0.06 }}
           className="mt-12 space-y-8 sm:mt-16"
         >
           <div className="text-center">

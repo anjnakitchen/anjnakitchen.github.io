@@ -43,6 +43,13 @@ body {
     background: transparent;
     padding-left: 0;
   }
+
+  /* Heavy blur drift is costly on mobile GPUs and can make fades feel choppy. */
+  .hero-aurora,
+  .hero-aurora-delay {
+    animation: none;
+    opacity: 0.75;
+  }
 }
 
 .font-display {

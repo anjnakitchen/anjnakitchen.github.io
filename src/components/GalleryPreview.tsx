@@ -4,6 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { galleryPhotos } from "@/data/social";
+import {
+  revealInView,
+  revealInitial,
+  revealTransition,
+  revealViewport,
+} from "@/lib/motion";
 
 export function GalleryPreview() {
   const preview = galleryPhotos.slice(0, 4);
@@ -12,10 +18,10 @@ export function GalleryPreview() {
     <section className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8 }}
+          initial={revealInitial}
+          whileInView={revealInView}
+          viewport={revealViewport}
+          transition={revealTransition}
           className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
@@ -35,13 +41,9 @@ export function GalleryPreview() {
         </motion.div>
 
         <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4 lg:gap-4">
-          {preview.map((photo, index) => (
-            <motion.div
+          {preview.map((photo) => (
+            <div
               key={photo.src}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.55 }}
               className="relative aspect-square overflow-hidden rounded-xl sm:rounded-2xl"
             >
               <Image
@@ -51,7 +53,7 @@ export function GalleryPreview() {
                 className="object-cover"
                 sizes="(max-width: 640px) 50vw, 25vw"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

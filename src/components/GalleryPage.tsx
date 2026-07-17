@@ -5,6 +5,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { galleryPhotos } from "@/data/social";
 import { business } from "@/data/menu";
+import {
+  heroTransition,
+  revealInView,
+  revealInitial,
+} from "@/lib/motion";
 
 export function GalleryPage() {
   return (
@@ -15,9 +20,9 @@ export function GalleryPage() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,70,140,0.18),transparent_55%)]"
         />
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
+          initial={revealInitial}
+          animate={revealInView}
+          transition={heroTransition(0)}
           className="relative mx-auto max-w-6xl text-center"
         >
           <p className="font-body text-xs tracking-[0.3em] text-[#ff7aa8] uppercase">
@@ -43,13 +48,9 @@ export function GalleryPage() {
 
       <section className="relative px-3 pb-20 sm:px-8 sm:pb-28">
         <div className="mx-auto columns-2 gap-2 sm:columns-3 sm:gap-3 lg:max-w-6xl lg:gap-4">
-          {galleryPhotos.map((photo, index) => (
-            <motion.figure
+          {galleryPhotos.map((photo) => (
+            <figure
               key={photo.src}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-20px" }}
-              transition={{ delay: Math.min(index * 0.03, 0.18), duration: 0.4 }}
               className="mb-2 break-inside-avoid overflow-hidden rounded-xl sm:mb-3 sm:rounded-2xl lg:mb-4"
             >
               <Image
@@ -60,7 +61,7 @@ export function GalleryPage() {
                 className="h-auto w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 360px"
               />
-            </motion.figure>
+            </figure>
           ))}
         </div>
 
